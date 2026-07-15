@@ -129,6 +129,7 @@
       letter-spacing: .2em; text-transform: uppercase;
       text-decoration: none; color: var(--ink);
       transition: background .28s, color .28s;
+      cursor: pointer;
     }
     .hero-cta:hover { background: var(--ink); color: var(--white); }
 
@@ -163,7 +164,7 @@
     }
     .skills-list li:hover { border-color: var(--gold); color: var(--gold); }
 
-    /* TRAYECTORIA (Experiencia y Formación) */
+    /* TRAYECTORIA */
     #trajectory { background: var(--ivory); border-bottom: 1px solid var(--border); }
     .trajectory-grid {
       display: grid;
@@ -215,6 +216,159 @@
       position: absolute;
       left: 0;
       color: var(--gold);
+    }
+
+    /* SERVICIOS */
+    #services { background: var(--white); border-bottom: 1px solid var(--border); }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 28px;
+      margin-top: 8px;
+    }
+    .service-card {
+      background: var(--ivory);
+      padding: 28px 20px;
+      text-align: center;
+      border: 1px solid var(--border);
+      transition: border-color .25s, transform .25s;
+    }
+    .service-card:hover { border-color: var(--gold); transform: translateY(-4px); }
+    .service-card .icon {
+      font-size: 2.2rem;
+      margin-bottom: 12px;
+      display: block;
+    }
+    .service-card h4 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 600;
+      font-size: 1.1rem;
+      letter-spacing: .06em;
+    }
+    .service-card p {
+      font-size: .8rem;
+      color: var(--mist);
+      margin-top: 6px;
+    }
+
+    /* PROYECTOS */
+    #projects { background: var(--ivory); border-bottom: 1px solid var(--border); }
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 32px;
+      margin-top: 8px;
+    }
+    .project-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      overflow: hidden;
+      transition: box-shadow .3s, transform .3s;
+    }
+    .project-card:hover { box-shadow: 0 8px 20px rgba(0,0,0,0.04); transform: translateY(-4px); }
+    .project-card .img-placeholder {
+      background: #eae7e1;
+      height: 140px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--mist);
+      font-size: 2.5rem;
+      font-weight: 300;
+    }
+    .project-card .info { padding: 20px 20px 24px; }
+    .project-card .info h4 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 600;
+      font-size: 1.1rem;
+      letter-spacing: .04em;
+    }
+    .project-card .info .tech {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 10px 0 8px;
+    }
+    .project-card .info .tech span {
+      font-size: .6rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      background: var(--ivory);
+      padding: 2px 10px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+    }
+    .project-card .info p {
+      font-size: .82rem;
+      color: var(--mist);
+      line-height: 1.6;
+      margin-top: 6px;
+    }
+
+    /* IDIOMAS */
+    #languages { background: var(--white); border-bottom: 1px solid var(--border); }
+    .lang-list { display: flex; flex-direction: column; gap: 20px; max-width: 400px; margin: 8px auto 0; }
+    .lang-item {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .lang-item .name {
+      width: 100px;
+      font-weight: 500;
+      font-size: .9rem;
+    }
+    .lang-item .level-bar {
+      flex: 1;
+      height: 6px;
+      background: var(--border);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    .lang-item .level-bar .fill {
+      height: 100%;
+      background: var(--gold);
+      border-radius: 4px;
+      width: 0%;
+    }
+    .lang-item .level-label {
+      width: 40px;
+      font-size: .75rem;
+      color: var(--mist);
+      text-align: right;
+    }
+
+    /* CERTIFICACIONES */
+    #certifications { background: var(--ivory); border-bottom: 1px solid var(--border); }
+    .certs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 24px;
+      margin-top: 8px;
+    }
+    .cert-card {
+      background: var(--white);
+      padding: 20px 16px;
+      text-align: center;
+      border: 1px solid var(--border);
+      transition: border-color .25s;
+    }
+    .cert-card:hover { border-color: var(--gold); }
+    .cert-card .icon {
+      font-size: 2rem;
+      display: block;
+      margin-bottom: 8px;
+    }
+    .cert-card h4 {
+      font-size: .82rem;
+      font-weight: 500;
+      letter-spacing: .04em;
+    }
+    .cert-card .source {
+      font-size: .7rem;
+      color: var(--mist);
+      margin-top: 4px;
     }
 
     /* CONTACT */
@@ -284,7 +438,13 @@
       .burger { display: flex; }
       section { padding: 72px 20px; }
       .about-grid, .contact-grid, .trajectory-grid { grid-template-columns: 1fr; gap: 40px; }
+      .services-grid { grid-template-columns: 1fr 1fr; }
       footer { flex-direction: column; align-items: flex-start; padding: 28px 24px; }
+    }
+    @media (max-width: 480px) {
+      .services-grid, .projects-grid, .certs-grid { grid-template-columns: 1fr; }
+      .lang-item { flex-wrap: wrap; gap: 6px; }
+      .lang-item .name { width: 70px; }
     }
 
     /* SCROLL REVEAL */
@@ -301,6 +461,10 @@
     <span class="nav-logo">Sofía Visintini Plaza</span>
     <ul class="nav-links" id="nav-menu">
       <li><a href="#about">Sobre mí</a></li>
+      <li><a href="#services">Servicios</a></li>
+      <li><a href="#projects">Proyectos</a></li>
+      <li><a href="#languages">Idiomas</a></li>
+      <li><a href="#certifications">Certificaciones</a></li>
       <li><a href="#trajectory">Trayectoria</a></li>
       <li><a href="#contact">Contacto</a></li>
     </ul>
@@ -311,19 +475,13 @@
 
   <header class="hero" id="home">
     <div class="avatar-wrap">
-      <!--
-        Para usar tu foto, reemplaza el div por:
-        <img src="tu-foto.jpg" alt="Sofía Visintini Plaza" />
-      -->
+      <!-- Reemplaza el div con tu foto: <img src="tu-foto.jpg" alt="Sofía Visintini Plaza" /> -->
       <div class="avatar-placeholder">SVP</div>
     </div>
     <h1 class="hero-name">Sofía Amalia<br>Visintini Plaza</h1>
-    <p class="hero-title">Técnica Superior en Programación</p>
+    <p class="hero-title">Técnica Superior en Programación · Estudiante de Marketing Digital</p>
     <p class="hero-bio">
-      Técnica Superior en Programación con sólidas bases en desarrollo web,
-      análisis de datos y pasión por la tecnología. Actualmente, complemento
-      mi perfil técnico cursando la carrera de Marketing Digital para aportar
-      una visión estratégica a los proyectos.
+      Desarrollo soluciones tecnológicas con una mirada estratégica. Combino mi formación en programación con el estudio de marketing digital para crear experiencias que conectan y generan valor.
     </p>
     <a href="#contact" class="hero-cta">Conectemos</a>
   </header>
@@ -365,14 +523,155 @@
     </div>
   </section>
 
-  <!-- TRAYECTORIA: Experiencia + Formación -->
+  <!-- SERVICIOS -->
+  <section id="services">
+    <div class="section-inner">
+      <p class="section-label reveal">Servicios</p>
+      <h2 class="section-title reveal">¿Qué puedo hacer por ti?</h2>
+      <div class="section-divider reveal"></div>
+      <div class="services-grid">
+        <div class="service-card reveal">
+          <span class="icon">💻</span>
+          <h4>Desarrollo Web</h4>
+          <p>Creación de sitios estáticos y dinámicos con HTML, CSS, JavaScript y PHP.</p>
+        </div>
+        <div class="service-card reveal">
+          <span class="icon">📊</span>
+          <h4>Análisis de Datos</h4>
+          <p>Procesamiento y visualización de datos con Python y SQL para tomar mejores decisiones.</p>
+        </div>
+        <div class="service-card reveal">
+          <span class="icon">📱</span>
+          <h4>Marketing Digital</h4>
+          <p>Estrategias digitales, gestión de redes, contenido y comercio electrónico.</p>
+        </div>
+        <div class="service-card reveal">
+          <span class="icon">⚙️</span>
+          <h4>Automatización</h4>
+          <p>Scripts en Python para tareas repetitivas y optimización de flujos de trabajo.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROYECTOS -->
+  <section id="projects">
+    <div class="section-inner">
+      <p class="section-label reveal">Proyectos</p>
+      <h2 class="section-title reveal">Trabajos y prácticas</h2>
+      <div class="section-divider reveal"></div>
+      <div class="projects-grid">
+        <!-- Proyecto 1 -->
+        <div class="project-card reveal">
+          <div class="img-placeholder">🖥️</div>
+          <div class="info">
+            <h4>Landing Page Responsive</h4>
+            <div class="tech">
+              <span>HTML</span><span>CSS</span>
+            </div>
+            <p>Diseño de una página de presentación adaptable a todos los dispositivos. Práctica del curso Responsive Web Design de FreeCodeCamp.</p>
+          </div>
+        </div>
+        <!-- Proyecto 2 -->
+        <div class="project-card reveal">
+          <div class="img-placeholder">📊</div>
+          <div class="info">
+            <h4>Análisis de Datos con Python</h4>
+            <div class="tech">
+              <span>Python</span><span>Pandas</span>
+            </div>
+            <p>Procesamiento y visualización de un conjunto de datos real usando Python. Proyecto del curso de IBM.</p>
+          </div>
+        </div>
+        <!-- Proyecto 3 -->
+        <div class="project-card reveal">
+          <div class="img-placeholder">🧩</div>
+          <div class="info">
+            <h4>Algoritmos en JavaScript</h4>
+            <div class="tech">
+              <span>JavaScript</span>
+            </div>
+            <p>Resolución de algoritmos y estructuras de datos. Proyecto de certificación de FreeCodeCamp.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- IDIOMAS -->
+  <section id="languages">
+    <div class="section-inner">
+      <p class="section-label reveal">Idiomas</p>
+      <h2 class="section-title reveal">Comunicación global</h2>
+      <div class="section-divider reveal"></div>
+      <div class="lang-list">
+        <div class="lang-item reveal">
+          <span class="name">Inglés</span>
+          <div class="level-bar"><div class="fill" style="width:60%"></div></div>
+          <span class="level-label">B1</span>
+        </div>
+        <div class="lang-item reveal">
+          <span class="name">Portugués</span>
+          <div class="level-bar"><div class="fill" style="width:35%"></div></div>
+          <span class="level-label">A2</span>
+        </div>
+        <div class="lang-item reveal">
+          <span class="name">Italiano</span>
+          <div class="level-bar"><div class="fill" style="width:20%"></div></div>
+          <span class="level-label">A1</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CERTIFICACIONES -->
+  <section id="certifications">
+    <div class="section-inner">
+      <p class="section-label reveal">Certificaciones</p>
+      <h2 class="section-title reveal">Formación continua</h2>
+      <div class="section-divider reveal"></div>
+      <div class="certs-grid">
+        <div class="cert-card reveal">
+          <span class="icon">📘</span>
+          <h4>IA - TECLAB</h4>
+          <span class="source">Curso de Actualización</span>
+        </div>
+        <div class="cert-card reveal">
+          <span class="icon">🌐</span>
+          <h4>Responsive Web Design</h4>
+          <span class="source">FreeCodeCamp</span>
+        </div>
+        <div class="cert-card reveal">
+          <span class="icon">🧠</span>
+          <h4>JavaScript Algorithms</h4>
+          <span class="source">FreeCodeCamp</span>
+        </div>
+        <div class="cert-card reveal">
+          <span class="icon">🐍</span>
+          <h4>Python with Data Science</h4>
+          <span class="source">IBM</span>
+        </div>
+        <div class="cert-card reveal">
+          <span class="icon">🤖</span>
+          <h4>Machine Learning</h4>
+          <span class="source">IBM</span>
+        </div>
+        <div class="cert-card reveal">
+          <span class="icon">📈</span>
+          <h4>Comercio Electrónico</h4>
+          <span class="source">Google Digital Academy</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRAYECTORIA -->
   <section id="trajectory">
     <div class="section-inner">
       <p class="section-label reveal">Trayectoria</p>
       <h2 class="section-title reveal">Formación y experiencia<br><em>en constante evolución.</em></h2>
       <div class="section-divider reveal"></div>
       <div class="trajectory-grid">
-        <!-- Experiencia -->
         <div class="trajectory-block reveal">
           <h3>Experiencia</h3>
           <div class="trajectory-item">
@@ -385,7 +684,6 @@
             </ul>
           </div>
         </div>
-        <!-- Formación -->
         <div class="trajectory-block reveal">
           <h3>Formación</h3>
           <div class="trajectory-item">
@@ -394,7 +692,7 @@
           </div>
           <div class="trajectory-item">
             <div class="title">Técnico Superior en Programación</div>
-            <div class="meta">TECLAB · 2025 (Título obtenido)</div>
+            <div class="meta">TECLAB · 2025</div>
           </div>
           <div class="trajectory-item">
             <div class="title">Auxiliar en Programación (Título intermedio)</div>
@@ -432,8 +730,7 @@
       <div class="section-divider reveal"></div>
       <div class="contact-grid">
         <div class="contact-info reveal">
-          <p>Estoy abierta a oportunidades laborales, proyectos freelance o
-          colaboraciones. No dudes en escribirme.</p>
+          <p>Estoy abierta a oportunidades laborales, proyectos freelance o colaboraciones. No dudes en escribirme.</p>
           <div class="contact-details">
             <a href="mailto:sofiaamaliavisintini@gmail.com" class="contact-item">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
