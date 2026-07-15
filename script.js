@@ -16,7 +16,7 @@ document.querySelectorAll('.nav-links a').forEach(a =>
   a.addEventListener('click', () => menu.classList.remove('open'))
 );
 
-// ---------- 3. SCROLL REVEAL (animación de entrada) ----------
+// ---------- 3. SCROLL REVEAL ----------
 const observer = new IntersectionObserver(entries => {
   entries.forEach(e => {
     if (e.isIntersecting) {
@@ -27,7 +27,7 @@ const observer = new IntersectionObserver(entries => {
 }, { threshold: 0.12 });
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-// ---------- 4. CONTADOR DE VISITAS (localStorage) ----------
+// ---------- 4. CONTADOR DE VISITAS ----------
 let visits = localStorage.getItem('portfolioVisits');
 if (visits === null) {
   visits = 1;
@@ -66,7 +66,6 @@ backToTop.addEventListener('click', () => {
 const themeToggle = document.getElementById('themeToggle');
 const themeIcon = document.getElementById('themeIcon');
 
-// Cargar preferencia guardada
 const currentTheme = localStorage.getItem('theme') || 'light';
 if (currentTheme === 'dark') {
   document.body.classList.add('dark-mode');
@@ -82,17 +81,15 @@ themeToggle.addEventListener('click', () => {
   localStorage.setItem('theme', isDark ? 'dark' : 'light');
 });
 
-// ---------- 8. EFECTO DE ESCRITURA CON CURSOR PARPADEANTE ----------
+// ---------- 8. EFECTO DE ESCRITURA ----------
 const heroName = document.querySelector('.hero-name');
 if (heroName) {
   const originalHTML = heroName.innerHTML;
-  // Guardamos el texto plano (sin etiquetas <br>)
   const tempDiv = document.createElement('div');
   tempDiv.innerHTML = originalHTML;
   const textContent = tempDiv.textContent || tempDiv.innerText;
   const cleanText = textContent.replace(/\s+/g, ' ').trim();
 
-  // Limpiamos el contenido y ponemos un span para el efecto
   heroName.innerHTML = `<span class="typewriter"></span>`;
   const typewriterSpan = heroName.querySelector('.typewriter');
 
@@ -103,19 +100,15 @@ if (heroName) {
       index++;
       setTimeout(typeEffect, 90);
     } else {
-      // Al terminar, restauramos el HTML original pero manteniendo el cursor (se oculta al terminar)
-      // Para que el cursor no moleste, lo quitamos después de un tiempo
       setTimeout(() => {
         heroName.innerHTML = originalHTML;
-        // Añadimos un pequeño cursor estático (opcional)
-        // O simplemente dejamos el texto sin cursor
       }, 300);
     }
   }
   typeEffect();
 }
 
-// ---------- 9. VALIDACIÓN DE EMAIL EN TIEMPO REAL ----------
+// ---------- 9. VALIDACIÓN EMAIL EN TIEMPO REAL ----------
 const emailInput = document.getElementById('email');
 const emailHelp = document.getElementById('emailHelp');
 if (emailInput && emailHelp) {
@@ -135,7 +128,7 @@ if (emailInput && emailHelp) {
   });
 }
 
-// ---------- 10. CONTADOR DE CARACTERES EN EL MENSAJE ----------
+// ---------- 10. CONTADOR DE CARACTERES ----------
 const messageInput = document.getElementById('message');
 const charCount = document.getElementById('charCount');
 if (messageInput && charCount) {
@@ -144,16 +137,12 @@ if (messageInput && charCount) {
     const length = messageInput.value.length;
     charCount.textContent = `(${length}/${maxChars})`;
     charCount.className = '';
-    if (length > maxChars * 0.8) {
-      charCount.classList.add('warning');
-    }
-    if (length >= maxChars) {
-      charCount.classList.add('danger');
-    }
+    if (length > maxChars * 0.8) charCount.classList.add('warning');
+    if (length >= maxChars) charCount.classList.add('danger');
   });
 }
 
-// ---------- 11. MENÚ ACTIVO AL HACER SCROLL (resaltar sección actual) ----------
+// ---------- 11. MENÚ ACTIVO AL SCROLL ----------
 const sections = document.querySelectorAll('section[id]');
 const navLinks = document.querySelectorAll('.nav-links a');
 window.addEventListener('scroll', () => {
@@ -204,7 +193,6 @@ form.addEventListener('submit', async e => {
     if (response.ok) {
       showMsg('¡Mensaje enviado! Te responderé a la brevedad.', true);
       form.reset();
-      // Reseteamos contador y validación
       if (charCount) charCount.textContent = '(0/500)';
       if (emailHelp) { emailHelp.textContent = '✏️ Escribe tu correo'; emailHelp.className = ''; }
     } else {
