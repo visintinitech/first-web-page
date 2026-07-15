@@ -23,10 +23,18 @@
       <li><a href="#certifications">Certificaciones</a></li>
       <li><a href="#contact">Contacto</a></li>
     </ul>
-    <button class="burger" id="burger" aria-label="Menú" aria-expanded="false">
-      <span></span><span></span><span></span>
-    </button>
+    <div style="display: flex; align-items: center; gap: 16px;">
+      <button class="theme-toggle" id="themeToggle" aria-label="Cambiar tema claro/oscuro">
+        <span id="themeIcon">🌙</span>
+      </button>
+      <button class="burger" id="burger" aria-label="Menú" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
   </nav>
+
+  <!-- Botón volver arriba (flotante) -->
+  <button class="back-to-top" id="backToTop" aria-label="Volver arriba">↑</button>
 
   <header class="hero" id="home">
     <div class="avatar-wrap">
@@ -292,10 +300,11 @@
           <div class="field">
             <label for="email">Correo electrónico</label>
             <input type="email" id="email" name="email" placeholder="tu@email.com" required />
+            <small id="emailHelp" style="font-size:.7rem; color:var(--mist); margin-top:2px;">✓ Válido</small>
           </div>
           <div class="field">
-            <label for="message">Mensaje</label>
-            <textarea id="message" name="message" placeholder="Cuéntame de qué se trata…" required></textarea>
+            <label for="message">Mensaje <span id="charCount">(0/500)</span></label>
+            <textarea id="message" name="message" placeholder="Cuéntame de qué se trata…" maxlength="500" required></textarea>
           </div>
           <p class="form-msg" id="form-msg" role="alert"></p>
           <button type="submit" class="form-btn" id="form-btn">Enviar mensaje</button>
@@ -306,7 +315,7 @@
 
   <footer>
     <span class="footer-name">Sofía Visintini Plaza</span>
-    <p>© <span id="year"></span> — Hecho con 💛 · Visitas: <span id="visit-count">0</span></p>
+    <p>© <span id="year"></span> — Hecho con 💛 · Visitas: <span id="visit-count">0</span> · Hora: <span id="clock">--:--:--</span></p>
     <div class="footer-socials">
       <a href="#" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
         <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
