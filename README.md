@@ -1,4 +1,4 @@
-# 👩‍💻 Mi Portfolio Personal · Sofía Visintini Plaza
+# 👩‍💻 Mi Portfolio Personal · Sofía Amalia Visintini Plaza
 
 > **README Bilingüe** · **Bilingual README** (English / Español)
 
