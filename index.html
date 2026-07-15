@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Tu Nombre — Portfolio</title>
+  <title>Sofía Amalia Visintini — Portfolio</title>
+  <meta name="description" content="Portfolio de Sofía Amalia Visintini, Auxiliar en Programación. Formación en TECLAB, experiencia en atención al público y gestión de datos." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
@@ -162,24 +163,79 @@
     }
     .skills-list li:hover { border-color: var(--gold); color: var(--gold); }
 
-    /* CONTACT */
-    #contact { background: var(--ivory); }
-    .contact-grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: 64px; align-items: start; }
-    .contact-info p { font-size: .9rem; color: var(--mist); line-height: 1.9; margin-bottom: 32px; }
-    .social-links { display: flex; flex-direction: column; gap: 14px; }
-    .social-link {
-      display: flex; align-items: center; gap: 12px;
-      text-decoration: none; font-size: .8rem;
-      font-weight: 400; letter-spacing: .06em;
-      color: var(--mist); transition: color .25s;
+    /* TRAYECTORIA (Experiencia y Formación) */
+    #trajectory { background: var(--ivory); border-bottom: 1px solid var(--border); }
+    .trajectory-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: start;
     }
-    .social-link:hover { color: var(--gold); }
+    .trajectory-block h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      font-weight: 400;
+      margin-bottom: 16px;
+      color: var(--ink);
+      letter-spacing: .04em;
+    }
+    .trajectory-item {
+      margin-bottom: 24px;
+      padding-bottom: 24px;
+      border-bottom: 1px solid var(--border);
+    }
+    .trajectory-item:last-child { border-bottom: 0; margin-bottom: 0; padding-bottom: 0; }
+    .trajectory-item .title {
+      font-weight: 500;
+      font-size: .95rem;
+      color: var(--ink);
+    }
+    .trajectory-item .meta {
+      font-size: .78rem;
+      color: var(--mist);
+      margin-top: 2px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 16px;
+    }
+    .trajectory-item .desc {
+      font-size: .85rem;
+      color: var(--mist);
+      margin-top: 6px;
+      padding-left: 0;
+      list-style: none;
+    }
+    .trajectory-item .desc li {
+      position: relative;
+      padding-left: 18px;
+      margin-bottom: 4px;
+    }
+    .trajectory-item .desc li::before {
+      content: "—";
+      position: absolute;
+      left: 0;
+      color: var(--gold);
+    }
+
+    /* CONTACT */
+    #contact { background: var(--white); border-bottom: 1px solid var(--border); }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: 64px; align-items: start; }
+    .contact-info p { font-size: .9rem; color: var(--mist); line-height: 1.9; margin-bottom: 28px; }
+    .contact-details { display: flex; flex-direction: column; gap: 18px; }
+    .contact-item {
+      display: flex; align-items: center; gap: 14px;
+      font-size: .85rem; color: var(--mist);
+      text-decoration: none;
+      transition: color .25s;
+    }
+    .contact-item:hover { color: var(--gold); }
+    .contact-item svg { flex-shrink: 0; }
 
     .contact-form { display: flex; flex-direction: column; gap: 20px; }
     .field { display: flex; flex-direction: column; gap: 6px; }
     .field label { font-size: .68rem; font-weight: 500; letter-spacing: .2em; text-transform: uppercase; color: var(--mist); }
     .field input, .field textarea {
-      background: var(--white); border: 1px solid var(--border);
+      background: var(--ivory); border: 1px solid var(--border);
       padding: 13px 16px;
       font-family: 'Inter', sans-serif; font-size: .9rem; color: var(--ink);
       outline: none; resize: none; border-radius: 0; -webkit-appearance: none;
@@ -227,7 +283,7 @@
       .nav-links.open { display: flex; }
       .burger { display: flex; }
       section { padding: 72px 20px; }
-      .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+      .about-grid, .contact-grid, .trajectory-grid { grid-template-columns: 1fr; gap: 40px; }
       footer { flex-direction: column; align-items: flex-start; padding: 28px 24px; }
     }
 
@@ -242,9 +298,10 @@
 <body>
 
   <nav id="navbar">
-    <span class="nav-logo">Tu Nombre</span>
+    <span class="nav-logo">Sofía Visintini</span>
     <ul class="nav-links" id="nav-menu">
       <li><a href="#about">Sobre mí</a></li>
+      <li><a href="#trajectory">Trayectoria</a></li>
       <li><a href="#contact">Contacto</a></li>
     </ul>
     <button class="burger" id="burger" aria-label="Menú" aria-expanded="false">
@@ -256,46 +313,114 @@
     <div class="avatar-wrap">
       <!--
         Para usar tu foto, reemplaza el div por:
-        <img src="tu-foto.jpg" alt="Tu Nombre" />
+        <img src="tu-foto.jpg" alt="Sofía Visintini" />
       -->
-      <div class="avatar-placeholder">TN</div>
+      <div class="avatar-placeholder">SV</div>
     </div>
-    <h1 class="hero-name">Tu&nbsp;Nombre</h1>
-    <p class="hero-title">Diseñador · Desarrollador · Creador</p>
+    <h1 class="hero-name">Sofía&nbsp;Visintini</h1>
+    <p class="hero-title">Auxiliar en Programación</p>
     <p class="hero-bio">
-      Apasionado por construir experiencias digitales que combinan estética y
-      funcionalidad. Trabajo en la intersección del diseño y la tecnología
-      para dar vida a ideas con propósito.
+      Estudiante de programación con sólidas bases en desarrollo web,
+      análisis de datos y pasión por la tecnología. Actualmente cursando
+      el Técnico Superior en Programación en TECLAB.
     </p>
-    <a href="#contact" class="hero-cta">Trabajemos juntos</a>
+    <a href="#contact" class="hero-cta">Contactame</a>
   </header>
 
+  <!-- SOBRE MÍ -->
   <section id="about">
     <div class="section-inner">
       <p class="section-label reveal">Sobre mí</p>
-      <h2 class="section-title reveal">Diseño con intención,<br><em>código con precisión.</em></h2>
+      <h2 class="section-title reveal">Código limpio,<br><em>mente analítica.</em></h2>
       <div class="section-divider reveal"></div>
       <div class="about-grid">
         <div class="about-text reveal">
-          <p>Con más de cinco años de experiencia en proyectos digitales, me
-          especializo en crear interfaces que no solo lucen bien, sino que
-          funcionan con fluidez y elegancia.</p>
-          <p>Cada proyecto comienza con una escucha profunda: entender las
-          metas, el contexto y las personas detrás de cada idea. Desde ahí,
-          construyo con foco y criterio estético.</p>
+          <p>Soy una persona constante, perseverante y con gran atención al detalle.
+          Mi formación como Técnica en Informática Profesional y Personal, sumada
+          al título intermedio de Auxiliar en Programación, me ha dado una base
+          sólida en fundamentos de programación y algoritmos.</p>
+          <p>Me interesa especialmente el desarrollo web y el análisis de datos.
+          Disfruto aprender nuevas tecnologías y aplicarlas para resolver
+          problemas concretos. Mi paso por la secretaría del Primer Teniente
+          Morandini me enseñó a gestionar trámites, atender al público y
+          organizar documentación con eficiencia.</p>
         </div>
         <div class="reveal">
           <ul class="skills-list">
-            <li>UI / UX Design</li><li>HTML &amp; CSS</li>
-            <li>JavaScript</li><li>React</li>
-            <li>Figma</li><li>Motion Design</li>
-            <li>Branding</li><li>Accesibilidad</li>
+            <li>HTML &amp; CSS</li>
+            <li>JavaScript</li>
+            <li>PHP</li>
+            <li>Python</li>
+            <li>Git &amp; GitHub</li>
+            <li>SQL / MySQL</li>
+            <li>VS Code</li>
+            <li>Google Workspace</li>
+            <li>Microsoft Office</li>
+            <li>Canva</li>
+            <li>Data Science</li>
+            <li>Algoritmos</li>
           </ul>
         </div>
       </div>
     </div>
   </section>
 
+  <!-- TRAYECTORIA: Experiencia + Formación -->
+  <section id="trajectory">
+    <div class="section-inner">
+      <p class="section-label reveal">Trayectoria</p>
+      <h2 class="section-title reveal">Formación y experiencia<br><em>en constante evolución.</em></h2>
+      <div class="section-divider reveal"></div>
+      <div class="trajectory-grid">
+        <!-- Experiencia -->
+        <div class="trajectory-block reveal">
+          <h3>Experiencia</h3>
+          <div class="trajectory-item">
+            <div class="title">Secretaria</div>
+            <div class="meta">Primer Teniente Morandini · 2024</div>
+            <ul class="desc">
+              <li>Atención al público y gestión de consultas</li>
+              <li>Carga de datos y archivo de documentación</li>
+              <li>Gestión de trámites internos</li>
+            </ul>
+          </div>
+        </div>
+        <!-- Formación -->
+        <div class="trajectory-block reveal">
+          <h3>Formación</h3>
+          <div class="trajectory-item">
+            <div class="title">Técnico Superior en Programación</div>
+            <div class="meta">TECLAB · 2025 – actualidad</div>
+          </div>
+          <div class="trajectory-item">
+            <div class="title">Auxiliar en Programación (Título intermedio)</div>
+            <div class="meta">TECLAB · 2025</div>
+          </div>
+          <div class="trajectory-item">
+            <div class="title">Técnico en Informática Profesional y Personal</div>
+            <div class="meta">IPEYMN°69 Juana Manso de Noronha · 2024</div>
+          </div>
+          <div class="trajectory-item" style="border-bottom:0; padding-bottom:0;">
+            <div class="title">Cursos complementarios</div>
+            <div class="meta">IA, Data Science, Desarrollo Web, etc.</div>
+            <ul class="desc">
+              <li>Curso de IA – TECLAB</li>
+              <li>Responsive Web Design – FreeCodeCamp</li>
+              <li>JavaScript Algorithms &amp; Data Structures – FreeCodeCamp</li>
+              <li>Python with Data Science – IBM</li>
+              <li>Machine Learning for Data Science – IBM</li>
+              <li>Comercio Electrónico – Google Digital Academy</li>
+              <li>Domina la IA con Gemini – Google Digital Academy</li>
+              <li>Productividad Personal – Google Digital Academy</li>
+              <li>Transformación Digital para el Empleo – Google Digital Academy</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
   <section id="contact">
     <div class="section-inner">
       <p class="section-label reveal">Contacto</p>
@@ -303,25 +428,25 @@
       <div class="section-divider reveal"></div>
       <div class="contact-grid">
         <div class="contact-info reveal">
-          <p>Estoy disponible para proyectos freelance, colaboraciones y
-          oportunidades de trabajo. No dudes en escribirme.</p>
-          <div class="social-links">
-            <a href="https://linkedin.com" target="_blank" rel="noopener" class="social-link">
-              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-              LinkedIn
+          <p>Estoy abierta a oportunidades laborales, proyectos freelance o
+          colaboraciones. No dudes en escribirme.</p>
+          <div class="contact-details">
+            <a href="mailto:sofiaamaliavisintini@gmail.com" class="contact-item">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              sofiaamaliavisintini@gmail.com
             </a>
-            <a href="https://github.com" target="_blank" rel="noopener" class="social-link">
-              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
-              GitHub
+            <a href="tel:+5493525519443" class="contact-item">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.574 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              +54 9 3525 51-9443
             </a>
-            <a href="https://twitter.com" target="_blank" rel="noopener" class="social-link">
-              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"/></svg>
-              Twitter / X
-            </a>
-            <a href="mailto:tu@email.com" class="social-link">
-              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-              tu@email.com
-            </a>
+            <span class="contact-item">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              Castulo Peña 1166, Córdoba
+            </span>
+            <span class="contact-item" style="font-size:.78rem; color:var(--gold);">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+              Italiana / Argentina (Doble ciudadanía)
+            </span>
           </div>
         </div>
 
@@ -346,7 +471,7 @@
   </section>
 
   <footer>
-    <span class="footer-name">Tu Nombre</span>
+    <span class="footer-name">Sofía Visintini</span>
     <p>© <span id="year"></span> — Diseñado con intención</p>
   </footer>
 
