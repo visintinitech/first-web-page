@@ -97,4 +97,4 @@ Todavía estoy mejorando este portfolio. Pronto añadiré:
 ---
 
 **Hecho con 💛 y muchas ganas de aprender** · **Made with 💛 and a lot of eagerness to learn**  
-© 2025 Sofía Amalia Visintini Plaza
+© 2026 Sofía Amalia Visintini Plaza
