@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tu Nombre — Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ivory:   #F8F7F4;
+      --ink:     #1A1A1A;
+      --mist:    #6B7280;
+      --gold:    #C9A96E;
+      --gold-lt: #E8D5B0;
+      --white:   #FFFFFF;
+      --border:  #E5E3DD;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--ivory);
+      color: var(--ink);
+      font-size: 15px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 20px 48px;
+      background: rgba(248,247,244,.88);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--ink);
+    }
+    .nav-links { display: flex; gap: 32px; list-style: none; }
+    .nav-links a {
+      text-decoration: none;
+      font-size: .74rem;
+      font-weight: 500;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--mist);
+      transition: color .25s;
+    }
+    .nav-links a:hover { color: var(--gold); }
+    .burger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+    .burger span { display: block; width: 22px; height: 1.5px; background: var(--ink); }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      text-align: center;
+      padding: 120px 24px 80px;
+    }
+    .avatar-wrap { position: relative; width: 148px; height: 148px; margin-bottom: 40px; }
+    .avatar-wrap::before {
+      content: '';
+      position: absolute; inset: -6px;
+      border-radius: 50%;
+      border: 1.5px solid var(--gold-lt);
+    }
+    .avatar-placeholder {
+      width: 100%; height: 100%;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #d6d0c8 0%, #b8b0a4 100%);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3rem; font-weight: 300;
+      color: var(--white); letter-spacing: .05em;
+    }
+    .avatar-wrap img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; display: block; }
+
+    .hero-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.8rem, 6vw, 5rem);
+      font-weight: 300;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      line-height: 1.1;
+      color: var(--ink);
+      display: inline-block;
+      position: relative;
+    }
+    .hero-name::after {
+      content: '';
+      display: block;
+      width: 40px; height: 1.5px;
+      background: var(--gold);
+      margin: 18px auto 0;
+      transition: width .4s ease;
+    }
+    .hero-name:hover::after { width: 80px; }
+
+    .hero-title {
+      margin-top: 20px;
+      font-size: .76rem; font-weight: 400;
+      letter-spacing: .28em; text-transform: uppercase;
+      color: var(--mist);
+    }
+    .hero-bio {
+      max-width: 520px; margin: 32px auto 0;
+      font-size: .95rem; font-weight: 300;
+      color: var(--mist); line-height: 1.85;
+    }
+    .hero-cta {
+      margin-top: 44px;
+      display: inline-block;
+      padding: 13px 38px;
+      border: 1px solid var(--ink);
+      font-size: .72rem; font-weight: 500;
+      letter-spacing: .2em; text-transform: uppercase;
+      text-decoration: none; color: var(--ink);
+      transition: background .28s, color .28s;
+    }
+    .hero-cta:hover { background: var(--ink); color: var(--white); }
+
+    /* SECTIONS */
+    section { padding: 96px 24px; }
+    .section-inner { max-width: 760px; margin: 0 auto; }
+    .section-label {
+      font-size: .68rem; font-weight: 500;
+      letter-spacing: .3em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 12px;
+    }
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.9rem, 3.5vw, 2.8rem);
+      font-weight: 300; line-height: 1.15;
+      color: var(--ink); margin-bottom: 28px;
+    }
+    .section-divider { width: 40px; height: 1px; background: var(--gold); margin-bottom: 36px; }
+
+    /* ABOUT */
+    #about { background: var(--white); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start; }
+    .about-text p { font-size: .94rem; color: var(--mist); line-height: 1.9; }
+    .about-text p + p { margin-top: 16px; }
+    .skills-list { list-style: none; display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px; }
+    .skills-list li {
+      font-size: .7rem; font-weight: 500;
+      letter-spacing: .14em; text-transform: uppercase;
+      border: 1px solid var(--border);
+      padding: 6px 14px; color: var(--ink);
+      transition: border-color .25s, color .25s;
+    }
+    .skills-list li:hover { border-color: var(--gold); color: var(--gold); }
+
+    /* CONTACT */
+    #contact { background: var(--ivory); }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: 64px; align-items: start; }
+    .contact-info p { font-size: .9rem; color: var(--mist); line-height: 1.9; margin-bottom: 32px; }
+    .social-links { display: flex; flex-direction: column; gap: 14px; }
+    .social-link {
+      display: flex; align-items: center; gap: 12px;
+      text-decoration: none; font-size: .8rem;
+      font-weight: 400; letter-spacing: .06em;
+      color: var(--mist); transition: color .25s;
+    }
+    .social-link:hover { color: var(--gold); }
+
+    .contact-form { display: flex; flex-direction: column; gap: 20px; }
+    .field { display: flex; flex-direction: column; gap: 6px; }
+    .field label { font-size: .68rem; font-weight: 500; letter-spacing: .2em; text-transform: uppercase; color: var(--mist); }
+    .field input, .field textarea {
+      background: var(--white); border: 1px solid var(--border);
+      padding: 13px 16px;
+      font-family: 'Inter', sans-serif; font-size: .9rem; color: var(--ink);
+      outline: none; resize: none; border-radius: 0; -webkit-appearance: none;
+      transition: border-color .25s;
+    }
+    .field input:focus, .field textarea:focus { border-color: var(--gold); }
+    .field textarea { height: 130px; }
+    .form-btn {
+      align-self: flex-start;
+      padding: 13px 40px;
+      background: var(--ink); color: var(--white); border: none;
+      font-family: 'Inter', sans-serif; font-size: .72rem; font-weight: 500;
+      letter-spacing: .2em; text-transform: uppercase;
+      cursor: pointer; transition: background .28s, opacity .25s;
+    }
+    .form-btn:hover { background: var(--gold); }
+    .form-btn:disabled { opacity: .5; cursor: not-allowed; }
+    .form-msg { font-size: .82rem; color: var(--mist); display: none; padding: 8px 0; }
+    .form-msg.visible { display: block; }
+    .form-msg.success { color: #4a8c6a; }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 32px 48px;
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 12px;
+    }
+    footer p { font-size: .72rem; color: var(--mist); letter-spacing: .06em; }
+    .footer-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: .9rem; font-weight: 600;
+      letter-spacing: .2em; text-transform: uppercase; color: var(--ink);
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      nav { padding: 18px 24px; }
+      .nav-links {
+        display: none; flex-direction: column;
+        position: absolute; top: 100%; left: 0; right: 0;
+        background: var(--ivory); border-bottom: 1px solid var(--border);
+        padding: 20px 24px; gap: 18px;
+      }
+      .nav-links.open { display: flex; }
+      .burger { display: flex; }
+      section { padding: 72px 20px; }
+      .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+      footer { flex-direction: column; align-items: flex-start; padding: 28px 24px; }
+    }
+
+    /* SCROLL REVEAL */
+    .reveal { opacity: 0; transform: translateY(22px); transition: opacity .7s ease, transform .7s ease; }
+    .reveal.in-view { opacity: 1; transform: translateY(0); }
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { opacity: 1; transform: none; transition: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav id="navbar">
+    <span class="nav-logo">Tu Nombre</span>
+    <ul class="nav-links" id="nav-menu">
+      <li><a href="#about">Sobre mí</a></li>
+      <li><a href="#contact">Contacto</a></li>
+    </ul>
+    <button class="burger" id="burger" aria-label="Menú" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <header class="hero" id="home">
+    <div class="avatar-wrap">
+      <!--
+        Para usar tu foto, reemplaza el div por:
+        <img src="tu-foto.jpg" alt="Tu Nombre" />
+      -->
+      <div class="avatar-placeholder">TN</div>
+    </div>
+    <h1 class="hero-name">Tu&nbsp;Nombre</h1>
+    <p class="hero-title">Diseñador · Desarrollador · Creador</p>
+    <p class="hero-bio">
+      Apasionado por construir experiencias digitales que combinan estética y
+      funcionalidad. Trabajo en la intersección del diseño y la tecnología
+      para dar vida a ideas con propósito.
+    </p>
+    <a href="#contact" class="hero-cta">Trabajemos juntos</a>
+  </header>
+
+  <section id="about">
+    <div class="section-inner">
+      <p class="section-label reveal">Sobre mí</p>
+      <h2 class="section-title reveal">Diseño con intención,<br><em>código con precisión.</em></h2>
+      <div class="section-divider reveal"></div>
+      <div class="about-grid">
+        <div class="about-text reveal">
+          <p>Con más de cinco años de experiencia en proyectos digitales, me
+          especializo en crear interfaces que no solo lucen bien, sino que
+          funcionan con fluidez y elegancia.</p>
+          <p>Cada proyecto comienza con una escucha profunda: entender las
+          metas, el contexto y las personas detrás de cada idea. Desde ahí,
+          construyo con foco y criterio estético.</p>
+        </div>
+        <div class="reveal">
+          <ul class="skills-list">
+            <li>UI / UX Design</li><li>HTML &amp; CSS</li>
+            <li>JavaScript</li><li>React</li>
+            <li>Figma</li><li>Motion Design</li>
+            <li>Branding</li><li>Accesibilidad</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="section-inner">
+      <p class="section-label reveal">Contacto</p>
+      <h2 class="section-title reveal">¿Tienes un proyecto<br><em>en mente?</em></h2>
+      <div class="section-divider reveal"></div>
+      <div class="contact-grid">
+        <div class="contact-info reveal">
+          <p>Estoy disponible para proyectos freelance, colaboraciones y
+          oportunidades de trabajo. No dudes en escribirme.</p>
+          <div class="social-links">
+            <a href="https://linkedin.com" target="_blank" rel="noopener" class="social-link">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+              LinkedIn
+            </a>
+            <a href="https://github.com" target="_blank" rel="noopener" class="social-link">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+              GitHub
+            </a>
+            <a href="https://twitter.com" target="_blank" rel="noopener" class="social-link">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"/></svg>
+              Twitter / X
+            </a>
+            <a href="mailto:tu@email.com" class="social-link">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              tu@email.com
+            </a>
+          </div>
+        </div>
+
+        <form class="contact-form reveal" id="contact-form" novalidate>
+          <div class="field">
+            <label for="name">Nombre</label>
+            <input type="text" id="name" name="name" placeholder="Tu nombre completo" required />
+          </div>
+          <div class="field">
+            <label for="email">Correo electrónico</label>
+            <input type="email" id="email" name="email" placeholder="tu@email.com" required />
+          </div>
+          <div class="field">
+            <label for="message">Mensaje</label>
+            <textarea id="message" name="message" placeholder="Cuéntame sobre tu proyecto…" required></textarea>
+          </div>
+          <p class="form-msg" id="form-msg" role="alert"></p>
+          <button type="submit" class="form-btn" id="form-btn">Enviar mensaje</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <span class="footer-name">Tu Nombre</span>
+    <p>© <span id="year"></span> — Diseñado con intención</p>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Burger
+    const burger = document.getElementById('burger');
+    const menu   = document.getElementById('nav-menu');
+    burger.addEventListener('click', () => {
+      const open = menu.classList.toggle('open');
+      burger.setAttribute('aria-expanded', open);
+    });
+    document.querySelectorAll('.nav-links a').forEach(a =>
+      a.addEventListener('click', () => menu.classList.remove('open'))
+    );
+
+    // Scroll reveal
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in-view'); observer.unobserve(e.target); } });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // Form
+    const form  = document.getElementById('contact-form');
+    const btn   = document.getElementById('form-btn');
+    const msgEl = document.getElementById('form-msg');
+
+    form.addEventListener('submit', async e => {
+      e.preventDefault();
+      const name  = form.name.value.trim();
+      const email = form.email.value.trim();
+      const msg   = form.message.value.trim();
+
+      if (!name || !email || !msg) { showMsg('Por favor completa todos los campos.', false); return; }
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { showMsg('Ingresa un correo electrónico válido.', false); return; }
+
+      btn.disabled = true;
+      btn.textContent = 'Enviando…';
+      await new Promise(r => setTimeout(r, 1400));
+      showMsg('¡Mensaje enviado! Te responderé a la brevedad.', true);
+      form.reset();
+      btn.disabled = false;
+      btn.textContent = 'Enviar mensaje';
+    });
+
+    function showMsg(text, ok) {
+      msgEl.textContent = text;
+      msgEl.className = 'form-msg visible' + (ok ? ' success' : '');
+      setTimeout(() => msgEl.classList.remove('visible'), 5000);
+    }
+  </script>
+</body>
+</html>
