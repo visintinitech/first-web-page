@@ -175,7 +175,7 @@ section { padding: 96px 24px; }
 }
 .skills-list li:hover { border-color: var(--gold); color: var(--gold); }
 
-/* ===== SERVICES (nuevo, siguiendo el estilo original) ===== */
+/* ===== SERVICES (nuevo) ===== */
 #services { background: var(--ivory); border-bottom: 1px solid var(--border); }
 .services-grid {
   display: grid;
@@ -200,7 +200,7 @@ section { padding: 96px 24px; }
 }
 .service-card p { font-size: .8rem; color: var(--mist); margin-top: 6px; }
 
-/* ===== PROJECTS (nuevo) ===== */
+/* ===== PROJECTS (actualizado) ===== */
 #projects { background: var(--white); border-bottom: 1px solid var(--border); }
 .projects-grid {
   display: grid;
@@ -339,7 +339,7 @@ section { padding: 96px 24px; }
 .cert-card h4 { font-size: .82rem; font-weight: 500; letter-spacing: .04em; }
 .cert-card .source { font-size: .7rem; color: var(--mist); margin-top: 4px; }
 
-/* ===== CONTACT (original modificado para incluir nuevas clases) ===== */
+/* ===== CONTACT (original con añadidos) ===== */
 #contact { background: var(--ivory); }
 .contact-grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: 64px; align-items: start; }
 .contact-info p { font-size: .9rem; color: var(--mist); line-height: 1.9; margin-bottom: 28px; }
