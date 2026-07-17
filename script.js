@@ -1,5 +1,5 @@
 // ============================================================
-//  PORTFOLIO DE SOFÍA VISINTINI PLAZA — TODAS LAS FUNCIONES
+//  PORTFOLIO DE SOFÍA AMALIA VISINTINI PLAZA — TODAS LAS FUNCIONES
 // ============================================================
 
 // ---------- 1. AÑO DINÁMICO EN FOOTER ----------
